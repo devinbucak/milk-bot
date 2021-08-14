@@ -28,13 +28,16 @@ client.login(process.env.BOT_TOKEN);
 
 client.on('message', async (msg) => {
     if (msg.author.id !== client.user.id) {
-        if(msg.content.toLowerCase().includes('milk')) {
+        if(msg.content.toLowerCase().includes('milk') || msg.content.toLowerCase().includes('milj')) {
             msg.react('🥛');
         }
         if(msg.content.includes('😢') || msg.content.includes('😭') || msg.content.includes('😿') || msg.content.includes('😥') || msg.content.split(' ').includes('cry') || msg.content.split(' ').includes('sad') || msg.content.includes(':sad') || msg.content.split(' ').includes('depressed')) {
             const {data: randomGif} = await giphy.random({tag: 'spilled milk', limit: 1});
             let url = randomGif.image_url;
             return msg.reply(`don't cry over spilt milk`, new Discord.MessageEmbed().setImage(url));
+        }
+        if(msg.content.includes('noah is stupid')) {
+            return ms.reply(`can confirm; Noah is, indeed, stupid`);
         }
     }
 });
